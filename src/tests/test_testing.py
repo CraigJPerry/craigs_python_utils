@@ -6,6 +6,7 @@
 
 import unittest
 import platform
+import os
 from craigs_python_utils.testing import Pep8TestCase, FileSystemAssertsMixin, PackageAssertsMixin
 
 
@@ -47,6 +48,11 @@ class TestFileSystemAssertsMixinContains(Pep8TestCase, FileSystemAssertsMixin):
     def test_file_contains(self):
         self.assert_file_contains("/etc/passwd", 1, "^root")
 
+    @unittest.skipIf(os.environ.get("TRAVIS") is None, "Travis CI machines return different results than my Fedora devbox")
+    def test_file_contains_multiple_on_one_line_plus_matches_on_other_lines(self):
+        self.assert_file_contains("/etc/passwd", 3, "root")
+
+    @unittest.skipUnless(os.environ.get("TRAVIS") is None, "Travis CI machines return different results than my Fedora devbox")
     def test_file_contains_multiple_on_one_line_plus_matches_on_other_lines(self):
         self.assert_file_contains("/etc/passwd", 4, "root")
 
