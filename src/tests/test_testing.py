@@ -60,7 +60,7 @@ class TestFileSystemAssertsMixinContains(Pep8TestCase, FileSystemAssertsMixin):
         self.assert_raises(AssertionError, self.assert_file_doesnt_contain, "/etc/passwd", "root")
 
 
-@unittest.skipUnless(platform.linux_distribution()[0] in ['Fedora'], "RPM-Only distributions for package management currently")
+#@unittest.skipUnless(platform.linux_distribution()[0] in ['Fedora'], "RPM-Only distributions for package management currently")
 class TestPackageAssertsMixinNotInstalled(Pep8TestCase, PackageAssertsMixin):
 
     def test_package_not_installed(self):
@@ -76,7 +76,7 @@ class TestPackageAssertsMixinNotInstalled(Pep8TestCase, PackageAssertsMixin):
         self.assert_raises(AssertionError, self.assert_package_not_installed, ['not-installed', 'bash'])
 
 
-@unittest.skipUnless(platform.linux_distribution()[0] in ['Fedora'], "RPM-Only distributions for package management currently")
+#@unittest.skipUnless(platform.linux_distribution()[0] in ['Fedora'], "RPM-Only distributions for package management currently")
 class TestPackageAssertsMixinInstalled(Pep8TestCase, PackageAssertsMixin):
 
     def test_package_installed(self):
