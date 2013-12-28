@@ -49,6 +49,7 @@ class TestInstallPackage(Pep8TestCase, PackageAssertsMixin):
         self.assert_equal(True, install_package(self.PACKAGE))
 
 
+@unittest.skipUnless(os.environ.get("TRAVIS") is None, "Travis CI machines don't have required useradd / userdel cmds in $PATH")
 class TestRemoveUser(Pep8TestCase, FileSystemAssertsMixin):
 
     def test_can_remove_user(self):
@@ -64,6 +65,7 @@ class TestRemoveUser(Pep8TestCase, FileSystemAssertsMixin):
             self.fail("User removal triggered unexpected return code")
 
 
+@unittest.skipUnless(os.environ.get("TRAVIS") is None, "Travis CI machines don't have required useradd / userdel cmds in $PATH")
 class TestAddUser(Pep8TestCase, FileSystemAssertsMixin):
 
     def test_can_add_user(self):

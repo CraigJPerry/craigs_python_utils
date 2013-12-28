@@ -51,7 +51,6 @@ class FileSystemAssertsMixin(object):
         return self.assert_file_contains(filepath, 0, regex)
 
 
-@unittest.skipUnless(platform.linux_distribution()[0] in ["Fedora"], "Currently RPM-only packaging.")
 class PackageAssertsMixin(object):
     "TestCase mixin giving assertions about the system packaging DB"
 
