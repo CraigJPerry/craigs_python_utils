@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 from os.path import dirname, join
 
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 README = open(join(dirname(__file__), "README.rst")).read()
 REQUIREMENTS = open(join(dirname(__file__), "requirements.txt")).readlines()
 
@@ -25,3 +25,4 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src", exclude=["tests"])
 )
+
