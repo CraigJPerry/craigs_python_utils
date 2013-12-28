@@ -5,6 +5,7 @@
 
 import unittest
 import platform
+import os
 from craigs_python_utils.testing import Pep8TestCase, PackageAssertsMixin, FileSystemAssertsMixin
 from craigs_python_utils.os_cmds import remove_package, install_package, remove_user, add_user, SudoError
 
