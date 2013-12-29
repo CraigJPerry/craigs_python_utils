@@ -5,4 +5,8 @@
 Python Utilities
 ================
 
-My collection of utils for python development.
+None of these are able to stand on their own, e.g. as a library. Equally
+though, they represent enough sunk dev time to make me want to keep open
+the option of reusing them.
+
+Hence, my collection of utils for python development.
