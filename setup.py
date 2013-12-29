@@ -23,6 +23,7 @@ setup(
     author_email="craigp84@gmail.com",
     install_requires=REQUIREMENTS,
     package_dir={"": "src"},
-    packages=find_packages("src", exclude=["tests"])
+    packages=find_packages("src", exclude=["tests"]),
+    test_suite='nose.collector'
 )
 

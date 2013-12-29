@@ -1,6 +1,9 @@
 .. image:: https://travis-ci.org/CraigJPerry/craigs_python_utils.png?branch=master
    :target: https://travis-ci.org/CraigJPerry/craigs_python_utils
 
+.. image:: https://coveralls.io/repos/CraigJPerry/craigs_python_utils/badge.png
+   :target: https://coveralls.io/r/CraigJPerry/craigs_python_utils
+
 ================
 Python Utilities
 ================
@@ -10,3 +13,4 @@ though, they represent enough sunk dev time to make me want to keep open
 the option of reusing them.
 
 Hence, my collection of utils for python development.
+
