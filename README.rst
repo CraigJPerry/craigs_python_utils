@@ -1,5 +1,7 @@
 .. image:: https://travis-ci.org/CraigJPerry/python-utils.png?branch=master
    :target: https://travis-ci.org/CraigJPerry/python-utils
+.. image:: https://coveralls.io/repos/CraigJPerry/craigs_python_utils/badge.png
+   :target: https://coveralls.io/r/CraigJPerry/craigs_python_utils
 
 ================
 Python Utilities
