@@ -4,15 +4,23 @@
 
 """Unit testing helpers."""
 
-import unittest
-import platform
 import re
-from os.path import exists, isfile, isdir, islink
+import unittest
+
 from craigs_python_utils.os_cmds import _sudo
+from os.path import exists, isfile, isdir, islink
+
+try:
+    from test.support import captured_stdout, captured_stderr
+except ImportError:
+    def raise_not_impl():
+        raise NotImplementedError("No capture implementation available in this Python.")
+    captured_stdout = raise_not_impl
+    captured_stderr = raise_not_impl
 
 
 class Pep8TestCase(unittest.TestCase):
-    "Improve consistency by exposing PEP8 compliant assertion names"
+    """Improve consistency by exposing PEP8 compliant assertion names"""
 
     assert_equal = unittest.TestCase.assertEqual
     assert_raises = unittest.TestCase.assertRaises
@@ -21,10 +29,10 @@ class Pep8TestCase(unittest.TestCase):
 
 
 class FileSystemAssertsMixin(object):
-    "Mix this class into your TestCase to get some file system assertions"
+    """Mix this class into your TestCase to get some file system assertions"""
 
     def assert_file_exists(self, filepath, kind="any"):
-        "Check if filepath exists and is a <file|dir|link>"
+        """Check if filepath exists and is a <file|dir|link>"""
 
         self.assert_true(exists(filepath))
 
@@ -36,26 +44,26 @@ class FileSystemAssertsMixin(object):
             self.assert_true(islink(filepath))
 
     def assert_file_doesnt_exist(self, filepath):
-        "Confirm filepath doesn't exist"
+        """Confirm filepath doesn't exist"""
         self.assert_true(not exists(filepath))
 
     def assert_file_contains(self, filepath, count, regex):
-        "Check if filepath contains count occurances of regex"
+        """Check if filepath contains count occurances of regex"""
 
         with open(filepath, "r") as fhandle:
             matches = sum(len(re.findall(regex, line)) for line in fhandle.xreadlines())
         self.assert_equal(count, matches)
 
     def assert_file_doesnt_contain(self, filepath, regex):
-        "Check if filepath has 0 occurences of regex"
+        """Check if filepath has 0 occurences of regex"""
         return self.assert_file_contains(filepath, 0, regex)
 
 
 class PackageAssertsMixin(object):
-    "TestCase mixin giving assertions about the system packaging DB"
+    """TestCase mixin giving assertions about the system packaging DB"""
 
     def assert_package_not_installed(self, package_names):
-        "Check if a package, or list of packages, are not installed"
+        """Check if a package, or list of packages, are not installed"""
         if not hasattr(package_names, '__iter__'):
             package_names = [package_names]
 
@@ -63,7 +71,7 @@ class PackageAssertsMixin(object):
             self.assert_true(not self._rpm_installed(pkg))
 
     def assert_package_installed(self, package_names):
-        "Check if a package, or list of packages, are installed"
+        """Check if a package, or list of packages, are installed"""
 
         if not hasattr(package_names, '__iter__'):
             package_names = [package_names]
@@ -74,4 +82,3 @@ class PackageAssertsMixin(object):
     def _rpm_installed(self, package_name):
         cmdline = ["/usr/bin/rpm", "-q", package_name]
         return _sudo(cmdline)
-
