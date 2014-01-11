@@ -6,12 +6,11 @@
 
 
 from setuptools import setup, find_packages
-from os.path import dirname, join
 
 
 __version__ = "0.1.4"
-README = open(join(dirname(__file__), "README.rst")).read()
-REQUIREMENTS = open(join(dirname(__file__), "requirements.txt")).readlines()
+README = open("README.rst").read()
+REQUIREMENTS = open("requirements.txt").readlines()
 
 
 setup(
